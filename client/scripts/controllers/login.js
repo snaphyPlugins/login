@@ -4,6 +4,10 @@
 angular.module($snaphy.getModuleName())
 .controller('loginControl', ['$scope', 'Database', '$location', 'LoginServices', '$injector',
     function($scope, Database, $location, LoginServices, $injector) {
+        //Adding title and name..
+        $scope.name = $snaphy.loadSettings('login', 'loginName');
+        $scope.title = $snaphy.loadSettings('login', 'loginTitle');
+
         //Controller defined here..
         $snaphy.setDefaultTemplate(false);
         var UserService = Database.getDb('login', 'User');
