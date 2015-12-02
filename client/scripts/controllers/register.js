@@ -7,7 +7,7 @@ angular.module($snaphy.getModuleName())
     function($scope, $stateParams) {
         //Controller defined here..
          
-        	$snaphy.template = false;
+        	$snaphy.setDefaultTemplate(false);
         
 
     }//controller function..
