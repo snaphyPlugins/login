@@ -8,7 +8,10 @@
 var settings = {
     "loginName": "Snaphy",
     "loginTitle": "Welcome, please login.",
-    onLoginRedirectState: 'dashboard'
+    "registerTitle":"Please fill the following details to create an employee.",
+    "onLoginRedirectState": 'dashboard',
+    "403ErrorRouteState": "403Error",
+    "apiRootBase" : "/api"
 };
 
 
