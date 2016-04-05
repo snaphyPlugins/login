@@ -55,6 +55,13 @@
       "password": "12345",
       "firstName": "Ravi",
       "lastName": "Gupta"
+    },
+    {
+      "username": "yogeshgupta",
+      "email": "yogeshgupta@gmail.com",
+      "password": "yogeshgupta_2016",
+      "firstName": "Yogesh",
+      "lastName": "Gupta"
     }
   ],
   "activate": true,
