@@ -199,7 +199,9 @@ module.exports = function(server, databaseObj, helper, packageObj) {
              ALLOW OWNER updateAttributes
 
              */
+            //If a users is logged by Employee account the he is a staff.
             Role.registerResolver('staff', function(role, context, cb) {
+                
                 function reject(err) {
                     if (err) {
                         return cb(err);
@@ -210,22 +212,29 @@ module.exports = function(server, databaseObj, helper, packageObj) {
                 function accept() {
                     cb(null, true);
                 }
-                //console.log(context.modelName, packageObj.databases.User, context.accessToken.userId);
-                if (context.modelName !== packageObj.databases.User) {
-                    // the target model is not project
-                    return reject();
-                }
+
                 var userId = context.accessToken.userId;
                 if (!userId) {
                     return reject(); // do not allow anonymous users
                 }
 
-                //Now accept the current definition of the staff..
-                return accept();
 
-                //TODO Add further checks to check if the given user is employee or not.
-
-            });
+                //Now check if the logged in user is an Employee
+                User.exists(userId, function(err, exists){
+                    if(err){
+                        console.log('Error occured in finding user for role of Staff.');
+                        console.log(err);
+                        return reject();
+                    }else{
+                        if(exists){
+                            //Accept the staff role..
+                            return accept();
+                        }else{
+                            return reject();
+                        }
+                    }
+                });
+            });//register resolver..
 
         },
 
